@@ -1,0 +1,562 @@
+[
+    {
+        "id": "097ec6afa149c6dd",
+        "type": "tab",
+        "label": "Magic Lights",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "16ab6a2123138f74",
+        "type": "mqtt-broker",
+        "name": "INRIA MQTT Broker",
+        "broker": "argus.paris.inria.fr",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "182a5fcd1309c435",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "1f8eb7a6991d0c59",
+        "type": "ui_tab",
+        "name": "Magic Light Home",
+        "icon": "fa-lightbulb-o",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "feab110a9397e72a",
+        "type": "ui_group",
+        "name": "Magic Light control",
+        "tab": "1f8eb7a6991d0c59",
+        "order": 1,
+        "disp": false,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "511a4e037859e641",
+        "type": "debug",
+        "z": "097ec6afa149c6dd",
+        "name": "All messages on aiotacademy",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2fe852ecf849710c",
+        "type": "mqtt in",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "topic": "aiotacademy",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "16ab6a2123138f74",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "511a4e037859e641",
+                "12c20a6c75f780d3"
+            ]
+        ]
+    },
+    {
+        "id": "8ed2913b82fed77f",
+        "type": "debug",
+        "z": "097ec6afa149c6dd",
+        "name": "Only displaying our mote messages",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "12c20a6c75f780d3",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "only mote 680A05",
+        "func": "if (msg.payload.mac === \"00-17-0d-00-00-68-0a-05\") {\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 400,
+        "wires": [
+            [
+                "8c78f05d272e1927"
+            ]
+        ]
+    },
+    {
+        "id": "8c78f05d272e1927",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "display data",
+        "func": "if (msg.payload.data){msg.payload = msg.payload.data;\nreturn msg;}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 400,
+        "wires": [
+            [
+                "8ed2913b82fed77f"
+            ]
+        ]
+    },
+    {
+        "id": "41c56d899e150712",
+        "type": "ui_switch",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "label": "Activate alarm",
+        "tooltip": "",
+        "group": "feab110a9397e72a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "alarmcontrol",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "AlarmActivate",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "AlarmDeactivate",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 260,
+        "y": 540,
+        "wires": [
+            [
+                "6b19b0c793e61e2a"
+            ]
+        ]
+    },
+    {
+        "id": "7632068a598e3871",
+        "type": "mqtt out",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "topic": "aiotacademy/sendData",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "16ab6a2123138f74",
+        "x": 1320,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "6b19b0c793e61e2a",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "Add our mote mac",
+        "func": "msg.payload = \"680A05 \" + msg.payload;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 740,
+        "wires": [
+            [
+                "7632068a598e3871"
+            ]
+        ]
+    },
+    {
+        "id": "eca0f209e6b24609",
+        "type": "ui_audio",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "group": "feab110a9397e72a",
+        "voice": "Google US English",
+        "always": true,
+        "x": 680,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "4e5bf0e73ae65ac6",
+        "type": "ui_toast",
+        "z": "097ec6afa149c6dd",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "Do nothing",
+        "cancel": "Reset the alarm",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 610,
+        "y": 1060,
+        "wires": [
+            [
+                "c7b4ecccbf522c5b"
+            ]
+        ]
+    },
+    {
+        "id": "c7b4ecccbf522c5b",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "Send AlarmReset instruction",
+        "func": "if (msg.payload==\"Reset the alarm\") {\n    msg.payload=\"AlarmReset\"\n    return msg;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 1060,
+        "wires": [
+            [
+                "6b19b0c793e61e2a"
+            ]
+        ]
+    },
+    {
+        "id": "33cbc966ae722989",
+        "type": "mqtt in",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "topic": "aiotacademy",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "16ab6a2123138f74",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 70,
+        "y": 1180,
+        "wires": [
+            [
+                "fe0ad2c77600da1b"
+            ]
+        ]
+    },
+    {
+        "id": "fe0ad2c77600da1b",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "Only our mote",
+        "func": "if (msg.payload.mac === \"00-17-0d-00-00-68-0a-05\") {\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 1260,
+        "wires": [
+            [
+                "52c6d5255f56b308",
+                "2133845c58f89437"
+            ]
+        ]
+    },
+    {
+        "id": "52c6d5255f56b308",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "Alarm Triggered detection",
+        "func": "if (msg.payload.data==\"Alarm Triggered!\"){\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1220,
+        "wires": [
+            [
+                "2133845c58f89437",
+                "4e5bf0e73ae65ac6",
+                "eca0f209e6b24609"
+            ]
+        ]
+    },
+    {
+        "id": "2133845c58f89437",
+        "type": "debug",
+        "z": "097ec6afa149c6dd",
+        "name": "debug displaying our mode data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "8de1d55ea91f13d8",
+        "type": "mqtt in",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "topic": "aiotacademy/sendData",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "16ab6a2123138f74",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "dc25627442c8882f"
+            ]
+        ]
+    },
+    {
+        "id": "dc25627442c8882f",
+        "type": "debug",
+        "z": "097ec6afa149c6dd",
+        "name": "All messages sent to motes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "bcfc2938db29e9e1",
+        "type": "ui_dropdown",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "label": "Choose the light color",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "feab110a9397e72a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Blue",
+                "value": "B",
+                "type": "str"
+            },
+            {
+                "label": "Red",
+                "value": "R",
+                "type": "str"
+            },
+            {
+                "label": "Green",
+                "value": "G",
+                "type": "str"
+            },
+            {
+                "label": "Yellow",
+                "value": "Y",
+                "type": "str"
+            },
+            {
+                "label": "Purple",
+                "value": "M",
+                "type": "str"
+            },
+            {
+                "label": "Turquoise",
+                "value": "C",
+                "type": "str"
+            },
+            {
+                "label": "White",
+                "value": "W",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 240,
+        "y": 620,
+        "wires": [
+            [
+                "6b19b0c793e61e2a"
+            ]
+        ]
+    }
+]
