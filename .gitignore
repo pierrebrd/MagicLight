@@ -60,6 +60,8 @@ dkms.conf
 */*/.latex_files/
 */*/*/.latex_files/
 
-
+Output
+*.emSession
+*.jlink
 
 

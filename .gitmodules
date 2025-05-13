@@ -1,0 +1,3 @@
+[submodule "aiot_play_fw"]
+	path = aiot_play_fw
+	url = https://github.com/aiotsystems/aiot_play_fw.git
