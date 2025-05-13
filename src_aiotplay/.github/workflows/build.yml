@@ -1,0 +1,24 @@
+name: CI 
+
+on: [push, fork]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config: ["Debug"]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: build all projects
+        run: BUILD_CONFIG=${{ matrix.config }} make docker
+      - name: release
+        uses: ncipollo/release-action@v1
+        if: >-
+          github.event_name == 'push' &&
+          startsWith(github.event.ref, 'refs/tags')
+        with:
+          generateReleaseNotes: true
+          token: ${{ secrets.RELEASE_TOKEN }}
