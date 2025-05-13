@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+*.x
 
 # Debug files
 *.dSYM/
@@ -50,3 +51,15 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# latex directories
+*/_minted*/
+*/*/_minted*/
+*/*/*/_minted*
+*/.latex_files/
+*/*/.latex_files/
+*/*/*/.latex_files/
+
+
+
+
