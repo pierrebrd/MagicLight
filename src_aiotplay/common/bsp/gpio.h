@@ -14,7 +14,8 @@ typedef void (*pin_toggle_cbt)(uint8_t);
 //=========================== prototypes ======================================
 
 void gpio_init(void);
-// P0.02gpio_init();_init(void);
+// P0.02
+void gpio_P002_output_init(void);
 void gpio_P002_output_high(void);
 void gpio_P002_output_low(void);
 void gpio_P002_input_init(pin_toggle_cbt pin_toggle_cb);
