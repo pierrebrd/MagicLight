@@ -1597,8 +1597,12 @@
         </folder>
       </folder>
       <file file_name="02drv_leds.c" />
-      <file file_name="02drv_ntw.c" />
-      <file file_name="magic_lights.c" />
+      <file file_name="02drv_ntw.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="magic_lights.c">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
     </folder>
     <folder Name="System Files">
       <file file_name="../common/nRF/Source/nrf52833_Vectors.s">
