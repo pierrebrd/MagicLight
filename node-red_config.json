@@ -159,7 +159,7 @@
         "type": "debug",
         "z": "097ec6afa149c6dd",
         "name": "All messages on aiotacademy",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -167,8 +167,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 530,
-        "y": 240,
+        "x": 650,
+        "y": 920,
         "wires": []
     },
     {
@@ -184,69 +184,11 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 110,
-        "y": 220,
+        "x": 250,
+        "y": 920,
         "wires": [
             [
-                "511a4e037859e641",
-                "12c20a6c75f780d3"
-            ]
-        ]
-    },
-    {
-        "id": "8ed2913b82fed77f",
-        "type": "debug",
-        "z": "097ec6afa149c6dd",
-        "name": "Only displaying our mote messages",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 780,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "12c20a6c75f780d3",
-        "type": "function",
-        "z": "097ec6afa149c6dd",
-        "name": "only mote 680a05",
-        "func": "if (msg.payload.mac === \"00-17-0d-00-00-68-0a-05\") {\n    return msg;\n}",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 230,
-        "y": 400,
-        "wires": [
-            [
-                "8c78f05d272e1927"
-            ]
-        ]
-    },
-    {
-        "id": "8c78f05d272e1927",
-        "type": "function",
-        "z": "097ec6afa149c6dd",
-        "name": "display data",
-        "func": "if (msg.payload.data){msg.payload = msg.payload.data;\nreturn msg;}",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 490,
-        "y": 400,
-        "wires": [
-            [
-                "8ed2913b82fed77f"
+                "511a4e037859e641"
             ]
         ]
     },
@@ -276,8 +218,8 @@
         "offcolor": "",
         "animate": true,
         "className": "",
-        "x": 260,
-        "y": 540,
+        "x": 900,
+        "y": 200,
         "wires": [
             [
                 "6b19b0c793e61e2a"
@@ -298,8 +240,8 @@
         "correl": "",
         "expiry": "",
         "broker": "16ab6a2123138f74",
-        "x": 1320,
-        "y": 740,
+        "x": 1340,
+        "y": 80,
         "wires": []
     },
     {
@@ -314,8 +256,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1090,
-        "y": 740,
+        "x": 1110,
+        "y": 80,
         "wires": [
             [
                 "7632068a598e3871"
@@ -330,8 +272,8 @@
         "group": "feab110a9397e72a",
         "voice": "Google US English",
         "always": true,
-        "x": 680,
-        "y": 1120,
+        "x": 700,
+        "y": 460,
         "wires": []
     },
     {
@@ -348,9 +290,9 @@
         "raw": false,
         "className": "",
         "topic": "",
-        "name": "",
-        "x": 610,
-        "y": 1060,
+        "name": "Alarm Popup",
+        "x": 630,
+        "y": 400,
         "wires": [
             [
                 "c7b4ecccbf522c5b"
@@ -369,8 +311,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 800,
-        "y": 1060,
+        "x": 820,
+        "y": 400,
         "wires": [
             [
                 "41c56d899e150712"
@@ -390,8 +332,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 70,
-        "y": 1180,
+        "x": 90,
+        "y": 520,
         "wires": [
             [
                 "fe0ad2c77600da1b"
@@ -410,8 +352,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 160,
-        "y": 1260,
+        "x": 180,
+        "y": 600,
         "wires": [
             [
                 "52c6d5255f56b308",
@@ -424,18 +366,17 @@
         "type": "function",
         "z": "097ec6afa149c6dd",
         "name": "Alarm Triggered detection",
-        "func": "if (msg.payload.data==\"T\"){\n    msg.payload=\"Alarm trigered!\"\n    return msg;\n}",
+        "func": "if (msg.payload.data==84){\n    msg.payload=\"Alarm triggered!\"\n    return msg;\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
-        "y": 1220,
+        "x": 470,
+        "y": 560,
         "wires": [
             [
-                "2133845c58f89437",
                 "4e5bf0e73ae65ac6",
                 "eca0f209e6b24609"
             ]
@@ -454,8 +395,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 1320,
+        "x": 770,
+        "y": 660,
         "wires": []
     },
     {
@@ -471,8 +412,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 120,
-        "y": 80,
+        "x": 260,
+        "y": 780,
         "wires": [
             [
                 "dc25627442c8882f"
@@ -484,7 +425,7 @@
         "type": "debug",
         "z": "097ec6afa149c6dd",
         "name": "All messages sent to motes",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -492,8 +433,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 100,
+        "x": 660,
+        "y": 800,
         "wires": []
     },
     {
@@ -503,7 +444,7 @@
         "name": "",
         "label": "Choose the light color",
         "tooltip": "",
-        "place": "Select option",
+        "place": "",
         "group": "feab110a9397e72a",
         "order": 3,
         "width": 0,
@@ -532,12 +473,12 @@
                 "type": "str"
             },
             {
-                "label": "Purple",
+                "label": "Magenta",
                 "value": "M",
                 "type": "str"
             },
             {
-                "label": "Turquoise",
+                "label": "Cyan",
                 "value": "C",
                 "type": "str"
             },
@@ -551,8 +492,8 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 240,
-        "y": 620,
+        "x": 820,
+        "y": 60,
         "wires": [
             [
                 "6b19b0c793e61e2a"
@@ -580,8 +521,8 @@
         "topic": "",
         "payload": "{\"data\":\"T\"}",
         "payloadType": "json",
-        "x": 160,
-        "y": 940,
+        "x": 180,
+        "y": 280,
         "wires": [
             [
                 "52c6d5255f56b308"
