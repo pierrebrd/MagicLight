@@ -214,7 +214,7 @@
         "id": "12c20a6c75f780d3",
         "type": "function",
         "z": "097ec6afa149c6dd",
-        "name": "only mote 680A05",
+        "name": "only mote 680a05",
         "func": "if (msg.payload.mac === \"00-17-0d-00-00-68-0a-05\") {\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
@@ -266,11 +266,11 @@
         "topic": "alarmcontrol",
         "topicType": "msg",
         "style": "",
-        "onvalue": "AlarmActivate",
+        "onvalue": "A",
         "onvalueType": "str",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "AlarmDeactivate",
+        "offvalue": "D",
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
@@ -307,7 +307,7 @@
         "type": "function",
         "z": "097ec6afa149c6dd",
         "name": "Add our mote mac",
-        "func": "msg.payload = \"680A05 \" + msg.payload;\nreturn msg;",
+        "func": "msg.payload = \"680a05 \" + msg.payload;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -343,8 +343,8 @@
         "highlight": "",
         "sendall": true,
         "outputs": 1,
-        "ok": "Do nothing",
-        "cancel": "Reset the alarm",
+        "ok": "Deactivate the alarm",
+        "cancel": "Let the alarm running",
         "raw": false,
         "className": "",
         "topic": "",
@@ -361,19 +361,19 @@
         "id": "c7b4ecccbf522c5b",
         "type": "function",
         "z": "097ec6afa149c6dd",
-        "name": "Send AlarmReset instruction",
-        "func": "if (msg.payload==\"Reset the alarm\") {\n    msg.payload=\"AlarmReset\"\n    return msg;\n}\n",
+        "name": "Deactivate the alarm",
+        "func": "if (msg.payload==\"Deactivate the alarm\") {\n    msg.payload=\"D\"\n    return msg;\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 820,
+        "x": 800,
         "y": 1060,
         "wires": [
             [
-                "6b19b0c793e61e2a"
+                "41c56d899e150712"
             ]
         ]
     },
@@ -424,7 +424,7 @@
         "type": "function",
         "z": "097ec6afa149c6dd",
         "name": "Alarm Triggered detection",
-        "func": "if (msg.payload.data==\"Alarm Triggered!\"){\n    return msg;\n}",
+        "func": "if (msg.payload.data==\"T\"){\n    msg.payload=\"Alarm trigered!\"\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -556,6 +556,35 @@
         "wires": [
             [
                 "6b19b0c793e61e2a"
+            ]
+        ]
+    },
+    {
+        "id": "8c11397576c611ff",
+        "type": "inject",
+        "z": "097ec6afa149c6dd",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"data\":\"T\"}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 940,
+        "wires": [
+            [
+                "52c6d5255f56b308"
             ]
         ]
     }
