@@ -175,6 +175,34 @@ int main(void) {
         _ntw_receive_cb      // ntw_receive_cb
     );
 
+    // Send the initial state to refresh the UI
+
+    uint8_t txBuf1[1];
+    txBuf1[0] = 'B';
+    bool    success1;
+    success1 = false;
+
+    while (success1 == false){
+        success1 = ntw_transmit(txBuf1, sizeof(txBuf1));
+        // debug
+        if (success1 == true) {
+            app_dbg.numcalls_periodtimer_cb_success++;
+        }
+        else {
+            app_dbg.numcalls_periodtimer_cb_fail++;
+        }
+        busywait_approx_1s();
+    }
+    txBuf1[0] = 'D';
+    success1 = ntw_transmit(txBuf1, sizeof(txBuf1));
+    // debug
+    if (success1 == true) {
+        app_dbg.numcalls_periodtimer_cb_success++;
+    }
+    else {
+        app_dbg.numcalls_periodtimer_cb_fail++;
+    }
+
 
     while (1) {
 
@@ -182,12 +210,12 @@ int main(void) {
         if (NRF_P0->IN & (1 << 17)) {
             // DP2 high -- movement detected
             app_vars.someoneDetected = TRUE;
-            printf("HIGH\n");
+            //printf("HIGH\n");
         }
         else {
             // no movement -- DP2 low
             app_vars.someoneDetected = FALSE;
-            printf("LOW\n");
+            //printf("LOW\n");
         }
 
 
@@ -285,6 +313,6 @@ void _ntw_receive_cb(uint8_t* buf, uint8_t bufLen) {
         break;
     }
 
-    printf("DETECTOR_MODE: %s\n", app_vars.isAlarmActivated ? "true" : "false");
-    printf("Light Color %d\n", app_vars.lightColor);
+    //printf("DETECTOR_MODE: %s\n", app_vars.isAlarmActivated ? "true" : "false");
+    //printf("Light Color %d\n", app_vars.lightColor);
 }

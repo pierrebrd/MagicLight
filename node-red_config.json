@@ -159,7 +159,7 @@
         "type": "debug",
         "z": "097ec6afa149c6dd",
         "name": "All messages on aiotacademy",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -168,7 +168,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 650,
-        "y": 920,
+        "y": 1300,
         "wires": []
     },
     {
@@ -185,7 +185,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 250,
-        "y": 920,
+        "y": 1300,
         "wires": [
             [
                 "511a4e037859e641"
@@ -272,8 +272,8 @@
         "group": "feab110a9397e72a",
         "voice": "Google US English",
         "always": true,
-        "x": 700,
-        "y": 460,
+        "x": 740,
+        "y": 440,
         "wires": []
     },
     {
@@ -289,10 +289,10 @@
         "cancel": "Let the alarm running",
         "raw": false,
         "className": "",
-        "topic": "",
+        "topic": "Warning!",
         "name": "Alarm Popup",
-        "x": 630,
-        "y": 400,
+        "x": 670,
+        "y": 380,
         "wires": [
             [
                 "c7b4ecccbf522c5b"
@@ -304,15 +304,15 @@
         "type": "function",
         "z": "097ec6afa149c6dd",
         "name": "Deactivate the alarm",
-        "func": "if (msg.payload==\"Deactivate the alarm\") {\n    msg.payload=\"D\"\n    return msg;\n}\n",
+        "func": "if (msg.payload==\"Deactivate the alarm\") {\n    msg.payload=\"D\";\n    return msg;\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 820,
-        "y": 400,
+        "x": 860,
+        "y": 380,
         "wires": [
             [
                 "41c56d899e150712"
@@ -332,8 +332,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 90,
-        "y": 520,
+        "x": 110,
+        "y": 680,
         "wires": [
             [
                 "fe0ad2c77600da1b"
@@ -352,12 +352,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 180,
-        "y": 600,
+        "x": 380,
+        "y": 660,
         "wires": [
             [
-                "52c6d5255f56b308",
-                "2133845c58f89437"
+                "2133845c58f89437",
+                "99b8d1b9dc381c2c"
             ]
         ]
     },
@@ -366,15 +366,15 @@
         "type": "function",
         "z": "097ec6afa149c6dd",
         "name": "Alarm Triggered detection",
-        "func": "if (msg.payload.data==84){\n    msg.payload=\"Alarm triggered!\"\n    return msg;\n}\n",
+        "func": "if (msg.payload==\"T\"){\n    msg.payload=\"Alarm triggered!\";\n    return msg;\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 560,
+        "x": 490,
+        "y": 480,
         "wires": [
             [
                 "4e5bf0e73ae65ac6",
@@ -395,8 +395,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
-        "y": 660,
+        "x": 850,
+        "y": 640,
         "wires": []
     },
     {
@@ -413,7 +413,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 260,
-        "y": 780,
+        "y": 1160,
         "wires": [
             [
                 "dc25627442c8882f"
@@ -425,7 +425,7 @@
         "type": "debug",
         "z": "097ec6afa149c6dd",
         "name": "All messages sent to motes",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -434,7 +434,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 660,
-        "y": 800,
+        "y": 1180,
         "wires": []
     },
     {
@@ -501,31 +501,64 @@
         ]
     },
     {
-        "id": "8c11397576c611ff",
-        "type": "inject",
+        "id": "99b8d1b9dc381c2c",
+        "type": "function",
         "z": "097ec6afa149c6dd",
-        "name": "",
-        "props": [
-            {
-                "p": "topic",
-                "vt": "str"
-            },
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"data\":\"T\"}",
-        "payloadType": "json",
-        "x": 180,
-        "y": 280,
+        "name": "Number to Char",
+        "func": "msg.payload = String.fromCharCode(msg.payload.data);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 340,
         "wires": [
             [
-                "52c6d5255f56b308"
+                "52c6d5255f56b308",
+                "bc74527b377d0f55",
+                "2a8cbfc615018104"
+            ]
+        ]
+    },
+    {
+        "id": "bc74527b377d0f55",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "Alarm state",
+        "func": "if (msg.payload==\"D\"){\nreturn msg;}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 220,
+        "wires": [
+            [
+                "41c56d899e150712"
+            ]
+        ]
+    },
+    {
+        "id": "2a8cbfc615018104",
+        "type": "function",
+        "z": "097ec6afa149c6dd",
+        "name": "color state",
+        "func": "if (msg.payload==\"R\" || msg.payload==\"G\" || msg.payload==\"B\" || msg.payload==\"C\" || msg.payload==\"M\" || msg.payload==\"Y\" || msg.payload==\"W\"){\nreturn msg;}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 60,
+        "wires": [
+            [
+                "bcfc2938db29e9e1"
             ]
         ]
     }
